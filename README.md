@@ -1,7 +1,11 @@
 # ISO2-25-GA1.1-Testing-3
 
-# Problem definition
+## Group in charge 
+- **implementation:** hiba & kobry 
+- **test cases:** alicia & alvaro 
+- **junit:** lucía & irem 
 
+## Problem definition
 An adventure company wishes for us to develop an application that generates 
 recommendations regarding the leisure activities it offers, based on weather conditions, the 
 health status of potential clients, and the characteristics of the venues where these leisure 

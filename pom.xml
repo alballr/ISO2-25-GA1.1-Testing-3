@@ -25,6 +25,12 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+		    <groupId>es.uclm.esi.iso2.axx</groupId>
+		    <artifactId>command-Line-Interface</artifactId>
+		    <version>0.0.1-SNAPSHOT</version>
+		</dependency>
     </dependencies>
 
     <!-- BUILD: aquí va la configuración de JaCoCo -->

@@ -22,13 +22,13 @@ public class Main {
         double humidity = cli.readDouble();
 
         cli.printLine("Is it raining? (true/false)");
-        boolean raining = Boolean.parseBoolean(cli.readLine());
+        boolean raining = cli.readBoolean();
 
         cli.printLine("Is it snowing? (true/false)");
-        boolean snowing = Boolean.parseBoolean(cli.readLine());
+        boolean snowing = cli.readBoolean();
 
         cli.printLine("Is it cloudy? (true/false)");
-        boolean cloudy = Boolean.parseBoolean(cli.readLine());
+        boolean cloudy = cli.readBoolean();
 
         cli.printLine("Venue capacity:");
         int capacity = cli.readInt();
@@ -36,14 +36,14 @@ public class Main {
         cli.printLine("Expected visitors:");
         int expectedVisitors = cli.readInt();
 
-        // Construct domain objects
+        
         Client client = new Client(healthy, symptoms);
         Weather weather = new Weather(temperature, humidity, raining, snowing, cloudy);
         Venue venue = new Venue(capacity, expectedVisitors);
 
-        // Evaluate recommendation
+        
         String recommendation = service.recommendActivity(client, weather, venue);
 
-        cli.printLine("\nRecommendation: " + recommendation);
+        cli.printLine("Recommendation: " + recommendation);
 	}
 }

@@ -8,7 +8,7 @@ public class Weather {
 	private boolean cloudy;
 	
 	public Weather(double temperature, double humidity, boolean raining, boolean snowing, boolean cloudy) {
-        if (humidity < 0 || humidity > 100)
+        if (humidity > 100)
             throw new IllegalArgumentException("Humidity must be between 0 and 100");
         this.temperature = temperature;
         this.humidity = humidity;

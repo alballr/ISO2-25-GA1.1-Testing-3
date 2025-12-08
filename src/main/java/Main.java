@@ -10,16 +10,16 @@ public class Main {
         cli.printLine("=== Adventure Activity Recommendation System ===");
 
         cli.printLine("Are you in good health? (true/false)");
-        boolean healthy = Boolean.parseBoolean(cli.readLine());
+        boolean healthy = cli.readBoolean();
 
         cli.printLine("Have you had infectious symptoms in the last two weeks? (true/false)");
-        boolean symptoms = Boolean.parseBoolean(cli.readLine());
+        boolean symptoms = cli.readBoolean();
 
         cli.printLine("Temperature (°C):");
         double temperature = cli.readDouble();
 
         cli.printLine("Humidity (%):");
-        double humidity = cli.readDouble();
+        double humidity = cli.readPositiveDouble();
 
         cli.printLine("Is it raining? (true/false)");
         boolean raining = cli.readBoolean();
@@ -31,10 +31,10 @@ public class Main {
         boolean cloudy = cli.readBoolean();
 
         cli.printLine("Venue capacity:");
-        int capacity = cli.readInt();
+        int capacity = cli.readPositiveInt();
 
         cli.printLine("Expected visitors:");
-        int expectedVisitors = cli.readInt();
+        int expectedVisitors = cli.readPositiveInt();
 
         
         Client client = new Client(healthy, symptoms);

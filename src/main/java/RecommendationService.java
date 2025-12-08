@@ -34,8 +34,6 @@ public class RecommendationService {
         if(isBeachOrPoolActivities(temperature, weather.isRaining(), isVenueWithinCapacity)) result = "Beach or Pool activites";
         	
         
-        
-        
         return result;
 		
 	}

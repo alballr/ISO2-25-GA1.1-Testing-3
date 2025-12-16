@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RecommendationService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISO2-25-GA1.1-Testing-3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">RecommendationService.java</span></div><h1>RecommendationService.java</h1><pre class="source lang-java linenums">
+
+public class RecommendationService {
+	
+<span class="fc" id="L5">	public RecommendationService() {</span>
+		
+<span class="fc" id="L7">	}</span>
+	public String recommendActivity(Client client, Weather weather, Venue venue) {
+		
+<span class="fc" id="L10">		String result = &quot;&quot;;</span>
+		
+<span class="fc bfc" id="L12" title="All 2 branches covered.">		if (!client.isAllowedToParticipate())</span>
+<span class="fc" id="L13">			result = &quot;NO-ACTIVITY&quot;;</span>
+		
+<span class="fc" id="L15">		double temperature = weather.getTemperature();</span>
+<span class="fc" id="L16">        double humidity = weather.getHumidity();</span>
+<span class="fc bfc" id="L17" title="All 4 branches covered.">        boolean rainOrSnow = weather.isRaining() || weather.isSnowing();</span>
+<span class="fc" id="L18">        boolean isVenueWithinCapacity = venue.withinCapacity();        </span>
+        
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (isStayAtHome(temperature, humidity, rainOrSnow))result = &quot;STAY-HOME&quot;;</span>
+        
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (isSkiing(temperature, humidity, rainOrSnow, isVenueWithinCapacity)) result = &quot;Skiing&quot;;</span>
+        
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if(isHikingOrClimbing(temperature, weather.isRaining(), isVenueWithinCapacity)) result = &quot;Hiking Or Climbing&quot;;</span>
+        	
+		
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if(isSummerAutumnSpringActivities(temperature, weather.isRaining(), weather.isCloudy(), humidity)) result = &quot;Spring, Summer and Autumn Activities&quot;;</span>
+        
+        
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (isCulturalGastronomicActivities(temperature, weather.isRaining(), isVenueWithinCapacity)) result = &quot;Cultural or Gastronomic activities&quot;;</span>
+        	
+        	
+        	
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if(isBeachOrPoolActivities(temperature, weather.isRaining(), isVenueWithinCapacity)) result = &quot;Beach or Pool activites&quot;;</span>
+        	
+        
+<span class="fc" id="L37">        return result;</span>
+		
+	}
+	
+	private boolean isStayAtHome(double temperature, double humidity, boolean rainOrSnow) {
+<span class="fc" id="L42">		boolean result = false;</span>
+<span class="fc bfc" id="L43" title="All 6 branches covered.">		if (temperature &lt; 0 &amp;&amp; humidity &lt; 15 &amp;&amp; rainOrSnow) {</span>
+<span class="fc" id="L44">			result = true;</span>
+		}
+        	
+<span class="fc" id="L47">		return result;</span>
+	}
+	
+	private boolean isSkiing(double temperature, double humidity, boolean rainOrSnow, boolean venueWithinCapapacity){
+<span class="fc" id="L51">		boolean result = false;</span>
+<span class="fc bfc" id="L52" title="All 8 branches covered.">		if (temperature &lt; 0 &amp;&amp; humidity &lt; 15 &amp;&amp; !rainOrSnow &amp;&amp; venueWithinCapapacity) result = true;</span>
+        	
+<span class="fc" id="L54">		return result;</span>
+	}
+	
+	private boolean isHikingOrClimbing(double temperature, boolean isRaining, boolean venueWithinCapapacity ) {
+<span class="fc" id="L58">		boolean result = false;</span>
+<span class="fc bfc" id="L59" title="All 8 branches covered.">		if(temperature &gt;= 0 &amp;&amp; temperature &lt;= 15 &amp;&amp; !isRaining &amp;&amp; venueWithinCapapacity) result = true;</span>
+        	
+<span class="fc" id="L61">		return result;</span>
+	}
+	
+	private boolean isSummerAutumnSpringActivities(double temperature, boolean isRaining, boolean isCloudy, double humidity ) {
+<span class="fc" id="L65">		boolean result = false;</span>
+<span class="fc bfc" id="L66" title="All 10 branches covered.">		if(temperature &gt;= 15 &amp;&amp; temperature &lt;= 25 &amp;&amp; !isRaining &amp;&amp; !isCloudy &amp;&amp; humidity &lt;= 60) result = true;</span>
+        
+<span class="fc" id="L68">		return result;</span>
+	}
+	
+	private boolean isCulturalGastronomicActivities(double temperature, boolean isRaining, boolean venueWithinCapapacity) {
+<span class="fc" id="L72">		boolean result = false;</span>
+<span class="fc bfc" id="L73" title="All 8 branches covered.">		if(temperature &gt;= 25 &amp;&amp; temperature &lt;= 35 &amp;&amp; !isRaining &amp;&amp; venueWithinCapapacity) result = true;</span>
+		
+<span class="fc" id="L75">		return result;</span>
+	}
+	
+	private boolean isBeachOrPoolActivities(double temperature, boolean isRaining, boolean venueWithinCapapacity) {
+<span class="fc" id="L79">		boolean result = false;</span>
+<span class="fc bfc" id="L80" title="All 6 branches covered.">		if(temperature &gt; 30 &amp;&amp; !isRaining &amp;&amp;  venueWithinCapapacity) result = true;</span>
+        	
+<span class="fc" id="L82">        return result;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

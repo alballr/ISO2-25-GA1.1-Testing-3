@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISO2-25-GA1.1-Testing-3</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">import es.uclm.esi.iso2.axx.command_Line_Interface.commandLine;
+
+import es.uclm.esi.iso2.axx.command_Line_Interface.commandLineI;
+
+<span class="nc" id="L5">public class Main {</span>
+	public static void main(String[] args) {
+<span class="fc" id="L7">		commandLine cli = new commandLine();</span>
+<span class="fc" id="L8">        RecommendationService service = new RecommendationService();</span>
+
+<span class="fc" id="L10">        cli.printLine(&quot;=== Adventure Activity Recommendation System ===&quot;);</span>
+
+<span class="fc" id="L12">        cli.printLine(&quot;Are you in good health? (true/false)&quot;);</span>
+<span class="fc" id="L13">        boolean healthy = cli.readBoolean();</span>
+
+<span class="fc" id="L15">        cli.printLine(&quot;Have you had infectious symptoms in the last two weeks? (true/false)&quot;);</span>
+<span class="fc" id="L16">        boolean symptoms = cli.readBoolean();</span>
+
+<span class="fc" id="L18">        cli.printLine(&quot;Temperature (°C):&quot;);</span>
+<span class="fc" id="L19">        double temperature = cli.readDouble();</span>
+
+<span class="fc" id="L21">        cli.printLine(&quot;Humidity (%):&quot;);</span>
+<span class="fc" id="L22">        double humidity = cli.readPositiveDouble();</span>
+
+<span class="fc" id="L24">        cli.printLine(&quot;Is it raining? (true/false)&quot;);</span>
+<span class="fc" id="L25">        boolean raining = cli.readBoolean();</span>
+
+<span class="fc" id="L27">        cli.printLine(&quot;Is it snowing? (true/false)&quot;);</span>
+<span class="fc" id="L28">        boolean snowing = cli.readBoolean();</span>
+
+<span class="fc" id="L30">        cli.printLine(&quot;Is it cloudy? (true/false)&quot;);</span>
+<span class="fc" id="L31">        boolean cloudy = cli.readBoolean();</span>
+
+<span class="fc" id="L33">        cli.printLine(&quot;Venue capacity:&quot;);</span>
+<span class="fc" id="L34">        int capacity = cli.readPositiveInt();</span>
+
+<span class="fc" id="L36">        cli.printLine(&quot;Expected visitors:&quot;);</span>
+<span class="fc" id="L37">        int expectedVisitors = cli.readPositiveInt();</span>
+
+        
+<span class="fc" id="L40">        Client client = new Client(healthy, symptoms);</span>
+<span class="fc" id="L41">        Weather weather = new Weather(temperature, humidity, raining, snowing, cloudy);</span>
+<span class="fc" id="L42">        Venue venue = new Venue(capacity, expectedVisitors);</span>
+
+        
+<span class="fc" id="L45">        String recommendation = service.recommendActivity(client, weather, venue);</span>
+
+<span class="fc" id="L47">        cli.printLine(&quot;Recommendation: &quot; + recommendation);</span>
+<span class="fc" id="L48">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

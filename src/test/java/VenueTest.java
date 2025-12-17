@@ -6,7 +6,11 @@ public class VenueTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testVenueConstructorNegativeCapacity() {
+        new Venue(1, -1);
         new Venue(-1, 1);
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Venue(-5, -10);
+        });
     }
 
  

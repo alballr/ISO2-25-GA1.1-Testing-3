@@ -49,7 +49,7 @@ public class RecommendationService {
 	
 	private boolean isSkiing(double temperature, double humidity, boolean rainOrSnow, boolean venueWithinCapapacity){
 <span class="fc" id="L51">		boolean result = false;</span>
-<span class="fc bfc" id="L52" title="All 8 branches covered.">		if (temperature &lt; 0 &amp;&amp; humidity &lt; 15 &amp;&amp; !rainOrSnow &amp;&amp; venueWithinCapapacity) result = true;</span>
+<span class="pc bpc" id="L52" title="1 of 8 branches missed.">		if (temperature &lt; 0 &amp;&amp; humidity &lt; 15 &amp;&amp; !rainOrSnow &amp;&amp; venueWithinCapapacity) result = true;</span>
         	
 <span class="fc" id="L54">		return result;</span>
 	}
@@ -63,7 +63,7 @@ public class RecommendationService {
 	
 	private boolean isSummerAutumnSpringActivities(double temperature, boolean isRaining, boolean isCloudy, double humidity ) {
 <span class="fc" id="L65">		boolean result = false;</span>
-<span class="fc bfc" id="L66" title="All 10 branches covered.">		if(temperature &gt;= 15 &amp;&amp; temperature &lt;= 25 &amp;&amp; !isRaining &amp;&amp; !isCloudy &amp;&amp; humidity &lt;= 60) result = true;</span>
+<span class="pc bpc" id="L66" title="1 of 10 branches missed.">		if(temperature &gt;= 15 &amp;&amp; temperature &lt;= 25 &amp;&amp; !isRaining &amp;&amp; !isCloudy &amp;&amp; humidity &lt;= 60) result = true;</span>
         
 <span class="fc" id="L68">		return result;</span>
 	}

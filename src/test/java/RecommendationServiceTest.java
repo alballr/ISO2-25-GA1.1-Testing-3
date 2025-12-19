@@ -450,6 +450,10 @@ public class RecommendationServiceTest {
         Venue venueOk = new Venue(200, 150);
         Venue venueOver = new Venue(100, 200);
         
+        // Caso positivo: temp>30, !isRaining, venue dentro de capacidad
+        Weather wBeach = new Weather(32.0, 50.0, false, false, false);
+        assertEquals("Beach or Pool activites", service.recommendActivity(client, wBeach, venueOk));
+
         // Case 1: temp=-0.7, isRaining=TRUE, venueWithinCapacity=FALSE
         Weather w1 = new Weather(-0.7, 50.0, true, false, false);
         assertNotEquals("Beach or Pool activites", service.recommendActivity(client, w1, venueOver));
